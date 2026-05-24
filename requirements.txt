@@ -1,11 +1,4 @@
 streamlit
 plotly
-numpy
 pandas
-torch
-torchvision
-opencv-python-headless
-matplotlib
 Pillow
-scikit-learn
-tensorflow
