@@ -29,7 +29,7 @@ import numpy as np
 import plotly.graph_objects as go
 import requests
 import streamlit as st
-import tensorflow as tf
+#import tensorflow as tf
 from fpdf import FPDF
 from PIL import Image, UnidentifiedImageError
 from streamlit_lottie import st_lottie
