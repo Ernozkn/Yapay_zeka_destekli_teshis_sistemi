@@ -567,7 +567,7 @@ st.markdown(
         border-radius: 16px;
         padding: 0.55rem 1.2rem;
         border: 1px solid rgba(15, 106, 175, 0.35);
-        background: linear-gradient(135deg, #0f6eb6 0%, #1386d9 100%);
+        background: transparent !important;
         color: #ffffff;
         box-shadow: var(--shadow-soft);
         transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
@@ -673,8 +673,8 @@ st.markdown(
     }}
 
     .app-shell {{
-        background: var(--background-content-color, rgba(255, 255, 255, 0.6));
-        border: 1px solid var(--border);
+        background: rgba(128, 128, 128, 0.1) !important;
+        border: 1px solid rgba(128, 128, 128, 0.2) !important;
         border-radius: 20px;
         padding: 1.4rem 1.6rem;
         margin-bottom: 1rem;
