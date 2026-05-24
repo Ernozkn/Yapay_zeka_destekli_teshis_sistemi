@@ -167,8 +167,31 @@ def get_logo_data_uri(path: Path) -> str | None:
 @st.cache_resource
 def load_model_from_path(model_path: str) -> tf.keras.Model:
     model_path = str(model_path)
-    if not Path(model_path).exists():
-        raise FileNotFoundError(f"Model dosyası bulunamadı: {model_path}")
+    path_obj = Path(model_path)
+    
+    # Eğer sunucuda model dosyası henüz yoksa internetteki Releases kasasından çek
+    if not path_obj.exists():
+        path_obj.parent.mkdir(parents=True, exist_ok=True)
+        
+        # Dosya adına göre ilgili GitHub Releases indirme linkini eşleştiriyoruz
+        if "akciger_modeli.h5" in model_path:
+            url = "https://github.com/Ernozkn/Yapay_zeka_destekli_teshis_sistemi/releases/download/v1.0/akciger_modeli.h5"
+        elif "beyin_modeli.h5" in model_path:
+            url = "https://github.com/Ernozkn/Yapay_zeka_destekli_teshis_sistemi/releases/download/v1.0/beyin_modeli.h5"
+        else:
+            raise FileNotFoundError(f"Model dosyası lokalde bulunamadı ve indirme linki eşleşmedi: {model_path}")
+            
+        with st.spinner(f"{path_obj.name} internetteki kasadan güvenli şekilde indiriliyor, lütfen bekleyin..."):
+            try:
+                response = requests.get(url, stream=True)
+                if response.status_code == 200:
+                    with open(model_path, "wb") as f:
+                        f.write(response.content)
+                else:
+                    raise RuntimeError(f"GitHub bağlantı hatası. Kod: {response.status_code}")
+            except Exception as e:
+                raise RuntimeError(f"Model internetten indirilirken hata oluştu: {e}")
+
     try:
         return tf.keras.models.load_model(model_path, safe_mode=False, compile=False)
     except TypeError as exc:
