@@ -193,7 +193,7 @@ def load_model_from_path(model_path: str) -> tf.keras.Model:
                 raise RuntimeError(f"Model internetten indirilirken hata oluştu: {e}")
 
     try:
-        return tf.keras.models.load_model(model_path, safe_mode=False, compile=False)
+        return tf.keras.models.load_model(model_path, safe_mode=False, compile=False, custom_objects={})
     except TypeError as exc:
         if "safe_mode" in str(exc):
             return tf.keras.models.load_model(model_path, compile=False)
