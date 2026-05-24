@@ -10,3 +10,4 @@ tensorflow
 opencv-python-headless
 scikit-learn
 matplotlib
+streamlit-lottie
