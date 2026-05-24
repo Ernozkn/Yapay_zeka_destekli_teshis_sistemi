@@ -544,8 +544,8 @@ st.markdown(
         --shadow-soft: 0 6px 22px rgba(2, 24, 46, 0.12);
         --ok: #1c7c4f;
         --danger: #8f1d1a;
-        --text-main: #0b1324;
-        --text-muted: #3c4d63;
+        --text-main: var(--text-color, #0b1324);
+        --text-muted: var(--secondary-text-color, #3c4d63);
         --glow: 0 0 0 3px rgba(32, 120, 196, 0.18);
     }}
 
