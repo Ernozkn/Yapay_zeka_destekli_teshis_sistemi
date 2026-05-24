@@ -559,7 +559,7 @@ st.markdown(
         max-height: 100vh;
         overflow-y: auto;
         padding-bottom: 1rem;
-        background: linear-gradient(180deg, #f4f8fc 0%, #eef4fa 100%);
+        background: var(--background-color, #f4f8fc);
         border-right: 1px solid var(--border);
     }}
 
@@ -673,7 +673,7 @@ st.markdown(
     }}
 
     .app-shell {{
-        background: linear-gradient(135deg, #ffffff 0%, #f1f7fe 55%, #eaf2fb 100%);
+        background: var(--background-content-color, rgba(255, 255, 255, 0.6));
         border: 1px solid var(--border);
         border-radius: 20px;
         padding: 1.4rem 1.6rem;
